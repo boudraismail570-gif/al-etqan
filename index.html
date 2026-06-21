@@ -1,190 +1,325 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجموعة الإتقان العالمية | للخدمات الفاخرة والتعقيم</title>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <title>Futuristic Luxury Corporate</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
     <style>
+        /* -------------------------------------------------------------
+           1. DESIGN SYSTEM & RESET
+        ------------------------------------------------------------- */
         :root {
-            --bg: #090d16;
-            --surface: #131a26;
-            --primary: #06b6d4;
-            --primary-glow: rgba(6, 182, 212, 0.3);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-primary: #070B14;
+            --bg-secondary: #0D1322;
+            --bg-tertiary: #131B2E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #8A99AD;
+            --accent-blue: #4DA3FF;
+            --accent-cyan: #4FFFE5;
+            --accent-purple: #A16EFF;
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-blur: blur(24px);
+            --radius-premium: 24px;
+            --container-max: 1440px;
+            --container-width: 1280px;
+            --cubic-bezier: cubic-bezier(0.22, 1, 0.36, 1);
         }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; text-decoration: none; list-style: none; }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* قائمة زجاجية ذكية متفاعلة */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(9, 13, 22, 0.7); backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: space-between; align-items: center; padding: 20px 8%;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        .logo { font-weight: 900; font-size: 26px; color: #fff; }
-        .logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--text-muted); font-weight: 700; font-size: 15px; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
 
-        /* الواجهة السينمائية */
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Reusable Components */
+        .container {
+            max-width: var(--container-max);
+            width: 100%;
+            padding: 0 40px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding-top: 140px;
+            padding-bottom: 140px;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-premium);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s var(--cubic-bezier), box-shadow 0.5s var(--cubic-bezier), background 0.5s var(--cubic-bezier);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFF 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 60px;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s var(--cubic-bezier);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: var(--text-primary);
+            border: none;
+            box-shadow: 0 4px 20px rgba(77, 163, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(77, 163, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Background Animated Elements */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(77,163,255,0.08) 0%, rgba(161,110,255,0.03) 50%, rgba(0,0,0,0) 100%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, 40px) scale(1.2); }
+        }
+
+        /* -------------------------------------------------------------
+           2. NAVIGATION BAR
+        ------------------------------------------------------------- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 24px 0;
+            transition: all 0.5s var(--cubic-bezier);
+        }
+
+        .navbar.scrolled {
+            padding: 16px 0;
+            background: rgba(7, 11, 20, 0.75);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.03em;
+            transition: transform 0.3s ease;
+        }
+
+        .logo span {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            transition: width 0.3s var(--cubic-bezier);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Mobile Overlay Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(7, 11, 20, 0.95);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            transform: translateY(-100%);
+            transition: transform 0.6s var(--cubic-bezier);
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .mobile-menu.open a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* -------------------------------------------------------------
+           3. HERO SECTION
+        ------------------------------------------------------------- */
         .hero {
-            min-height: 95vh; padding: 180px 8% 100px 8%; display: flex; flex-direction: column; align-items: center; text-align: center;
-            background: radial-gradient(circle at 50% 35%, rgba(6, 182, 212, 0.15), transparent 60%);
-        }
-        .hero h1 { font-size: 56px; font-weight: 900; line-height: 1.2; margin-bottom: 25px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 19px; color: var(--text-muted); max-width: 750px; margin-bottom: 45px; line-height: 1.8; }
-
-        /* الأزرار الفخمة المتحركة */
-        .btn-premium {
-            padding: 16px 45px; font-weight: 700; font-size: 17px; color: #000; background: var(--primary);
-            border-radius: 50px; border: none; cursor: pointer; box-shadow: 0 0 25px var(--primary-glow);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .btn-premium:hover { transform: scale(1.05); box-shadow: 0 0 40px var(--primary); }
-
-        /* الأقسام العامة */
-        section { padding: 100px 8%; text-align: center; }
-        .section-tag { color: var(--primary); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
-        .section-title { font-size: 38px; font-weight: 900; margin-bottom: 60px; }
-
-        /* شبكة الخدمات التفاعلية ثلاثية الأبعاد */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
-        .card {
-            background: var(--surface); padding: 50px 35px; border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.03); transition: 0.4s ease; cursor: pointer;
-        }
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(6, 182, 212, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .card-icon { font-size: 45px; margin-bottom: 25px; display: inline-block; }
-        .card h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
-        .card p { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
-
-        /* قسم المميزات والتقييم */
-        .features { background: #0c1322; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .review-card { background: var(--bg); padding: 30px; border-radius: 20px; text-align: right; border-right: 4px solid var(--primary); }
-        .stars { color: #f59e0b; margin-bottom: 15px; font-size: 18px; }
-        .client-name { font-weight: 700; margin-top: 15px; display: block; color: var(--primary); }
-
-        /* زر واتساب عائم متوهج باستمرار */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
-            background: #25d366; border-radius: 50px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000;
-            animation: ring 2s infinite; transition: 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
-        .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
-
-        @keyframes ring {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            overflow: hidden;
+            background: radial-gradient(circle at 80% 20%, rgba(161,110,255,0.06), transparent 50%);
         }
 
-        footer { background: #05070f; color: var(--text-muted); padding: 50px 8%; text-align: center; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.02); }
-    </style>
-</head>
-<body>
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
 
-    <!-- القائمة العلوية -->
-    <nav>
-        <div class="logo">الإتقان<span>.GLOBAL</span></div>
-        <ul class="nav-links">
-            <li><a href="#home" class="active">الرئيسية</a></li>
-            <li><a href="#services">خدماتنا</a></li>
-            <li><a href="#why-us">لماذا نحن</a></li>
-            <li><a href="#reviews">التقييمات</a></li>
-        </ul>
-    </nav>
+        .hero-content {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s var(--cubic-bezier) forwards;
+        }
 
-    <!-- واجهة الموقع الرئيسي -->
-    <section id="home" class="hero">
-        <h1>مفهوم جديد لخدمات تنظيف القصور والفيلات</h1>
-        <p>نحن نطوّر بيئة الرفاهية والصحة داخل منزلك؛ نعتمد على أحدث التقنيات السويسرية والتعقيم الحراري لتجربة نظافة تفوق توقعاتك.</p>
-        <a href="#services" class="btn-premium">استكشف خدماتنا الملكية</a>
-    </section>
-
-    <!-- قسم الخدمات التفاعلي -->
-    <section id="services">
-        <span class="section-tag">تميز بلا حدود</span>
-        <h2 class="section-title">باقة الخدمات الفاخرة</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">💎</div>
-                <h3>تطهير الفيلات والقصور</h3>
-                <p>تنظيف تخصصي وعناية فائقة بالرخام النادر، وجلي الواجهات، وتلميع الثريات الكريستالية الثمينة بمواد عضوية بالكامل.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">💨</div>
-                <h3>التعقيم بالبخار الحراري الجاف</h3>
-                <p>تكنولوجيا متطورة لعمق الأنسجة، تقضي على الميكروبات والبقع المستعصية في السجاد والمفروشات مع جفاف تام في دقائق.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">❄️</div>
-                <h3>تطهير الأنظمة الهوائية</h3>
-                <p>صيانة وغسيل متكامل لمجاري التكييف المركزي لضمان هواء نقي 100% وخالٍ من الغبار والبكتيريا لسلامة عائلتك.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم لماذا نحن -->
-    <section id="why-us" class="features">
-        <span class="section-tag">معايير سويسرية</span>
-        <h2 class="section-title">لماذا يختارنا أصحاب النفوذ والقصور؟</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>فريق نُخبة مدرب</h3>
-                <p>طاقم العمل لدينا يمر باختبارات أمنية وفنية دقيقة لضمان أعلى مستويات الأمان والاحترافية داخل منزلك.</p>
-            </div>
-            <div class="card">
-                <h3>مواد صديقة للبيئة</h3>
-                <p>نستخدم محاليل تعقيم وتلميع ألمانية معتمدة طبياً، آمنة تماماً على الأطفال، الحيوانات الأليفة، والأثاث الثمين.</p>
-            </div>
-            <div class="card">
-                <h3>التزام تام بالوقت</h3>
-                <p>جدولنا الزمني مقدس؛ ننجز العمل في الوقت المحدد وبأعلى دقة تشغيلية تضمن الحفاظ على خصوصية يومك.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم آراء العملاء -->
-    <section id="reviews">
-        <span class="section-tag">شركاء النجاح</span>
-        <h2 class="section-title">ماذا يقول عملاؤنا عنا؟</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"بصراحة مستوى مذهل من الاحترافية، قاموا بتنظيف الفيلا وجلي الرخام ليعود كأنه جديد تماماً. أنصح بهم بشدة للأثاث الثمين."</p>
-                <span class="client-name">المهندس خالد الهاشمي</span>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"خدمة تنظيف التكييف المركزي والتعقيم بالبخار غيرت جودة الهواء بالمنزل بشكل ملحوظ. طاقم محترم وسريع جداً."</p>
-                <span class="client-name">د. نورة السديري</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- زر واتساب العائم والنابض بالحركة -->
-    <a href="https://wa.me" class="whatsapp-float" target="_blank">
-        <svg viewBox="0 0 32 32">
-            <path d="M16 2a13 13 0 0 0-11.27 19.49L3 29l7.73-2A13 13 0 1 0 16 2zm6.75 18.5c-.3.85-1.5 1.55-2.07 1.62-.51.07-1.17.1-3.38-.82-2.83-1.17-4.65-4-4.8-4.19-.14-.19-1.15-1.53-1.15-2.92a3 3 0 0 1 .93-2.18c.26-.26.56-.32.74-.32h.53c.18 0 .42-.07.65.48.24.57.82 2 .9 2.16.07.16.12.34 0 .54-.11.23-.17.36-.34.56-.17.19-.36.43-.51.58-.17.16-.35.34-.15.68a9.41 9.41 0 0 0 1.72 2.13 8.32 8.32 0 0 0 2.48 1.53c.34.17.55.14.75-.08s.86-1 .1-1.3c-.15-.08-.25-.13-.41-.21s-.33-.16-.48-.06c-.46.3-1.5 1.84-1.5 1.84s.22.42.34.53A10.83 10.83 0 0 0 19 18.5c.34-.14.54-.11.75.14s.88 1.22.97 1.4c.09.18.09.34.03.46z"/>
-        </svg>
-    </a>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © مجموعة الإتقان العالمية لخدمات الرفاهية والقصور</p>
-    </footer>
-
-</body>
-</html>
+        @keyframes fadeInUp {
+        
