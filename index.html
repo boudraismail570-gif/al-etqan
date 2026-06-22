@@ -4,353 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر فون زون الاحترافي | PhoneZone</title>
+    <!-- روابط الخطوط والأيقونات -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <link href="https://googleapis.com" rel="stylesheet">
     
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --accent-color: #6366f1;
-            --accent-glow: #4f46e5;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
+    <!-- PLACEHOLDER_FOR_CSS -->
+</head>
+<body>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-        }
+    <!-- شريط التنقل العلوي -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-bolt"></i> PhoneZone
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" class="active">الرئيسية</a></li>
+            <li><a href="#products">الهواتف</a></li>
+            <li><a href="#featured">التميز</a></li>
+        </ul>
+        <div class="cart-icon-container" onclick="toggleCart()">
+            <i class="fa-solid fa-shopping-bag"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </nav>
 
-        body {
-            background: var(--bg-gradient);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+    <!-- القسم الترحيبي (Hero) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>اكتشف الجيل القادم من <span>الهواتف الذكية</span></h1>
+            <p>مرحباً بك في متجر PhoneZone، حيث نجمع لك أقوى الأجهزة العالمية بتصاميم سابقة لعصرها وأداء لا يعرف الحدود.</p>
+            <a href="#products" class="btn-primary">تصفح الهواتف الآن <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://unsplash.com" alt="Phone Hero">
+        </div>
+    </section>
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-        }
+    <!-- أدوات التحكم والفلترة -->
+    <div class="controls" id="products">
+        <h2>معرض الهواتف المتاحة</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCategory('all', this)">الكل</button>
+            <button class="filter-btn" onclick="filterCategory('apple', this)">Apple</button>
+            <button class="filter-btn" onclick="filterCategory('samsung', this)">Samsung</button>
+            <button class="filter-btn" onclick="filterCategory('xiaomi', this)">Xiaomi</button>
+        </div>
+    </div>
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    <!-- شبكة عرض المنتجات -->
+    <section class="products-section">
+        <div class="products-grid" id="products-container">
+            <!-- المنتجات تتولد ديناميكياً هنا -->
+        </div>
+    </section>
 
-        .logo i {
-            color: var(--accent-color);
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
+    <!-- قسم هاتف الأسبوع المتميز -->
+    <section class="featured-section" id="featured">
+        <div class="featured-container">
+            <div class="featured-info">
+                <span class="badge">الأكثر طلباً هذا الأسبوع</span>
+                <h2>Samsung Galaxy S24 Ultra</h2>
+                <p>إعادة تعريف القوة والذكاء الاصطناعي الفائق بجسم من التيتانيوم الصلب كاملاً.</p>
+                <ul class="specs-list">
+                    <li><i class="fa-solid fa-camera"></i> كاميرا خرافية بدقة 200 ميجابكسل مع تقريب بصري هجين</li>
+                    <li><i class="fa-solid fa-microchip"></i> معالج الذكاء الاصطناعي الأحدث Snapdragon 8</li>
+                    <li><i class="fa-solid fa-battery-full"></i> بطارية ضخمة تدوم يومين مع شحن لاسلكي فائق السرعة</li>
+                </ul>
+                <button class="btn-primary" onclick="addFeaturedToCart('Samsung Galaxy S24 Ultra', 1199)">إضافة العرض المتميز للسلة</button>
+            </div>
+            <div class="hero-image" style="max-width: 380px;">
+                <img src="https://unsplash.com" alt="Featured Phone">
+            </div>
+        </div>
+    </section>
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+    <!-- سلة المشتريات الجانبية -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div class="cart-footer">
+            <div class="total-price-container">
+                <span>الإجمالي:</span>
+                <span id="cart-total">$0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> إتمام الطلب عبر واتساب
+            </button>
+        </div>
+    </div>
 
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 لمتجر PhoneZone الإحترافي</p>
+    </footer>
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-color);
-        }
+    <!-- PLACEHOLDER_FOR_JAVASCRIPT -->
 
-        .cart-icon-container {
-            position: relative;
-            cursor: pointer;
-            font-size: 22px;
-            color: var(--text-main);
-            transition: transform 0.2s;
-        }
-
-        #cart-count {
-            position: absolute;
-            top: -8px;
-            right: -12px;
-            background: var(--accent-color);
-            color: white;
-            font-size: 12px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        @keyframes shake {
-            0% { transform: scale(1) rotate(0deg); }
-            20% { transform: scale(1.2) rotate(-15deg); }
-            40% { transform: scale(1.2) rotate(15deg); }
-            60% { transform: scale(1.2) rotate(-15deg); }
-            80% { transform: scale(1.2) rotate(15deg); }
-            100% { transform: scale(1) rotate(0deg); }
-        }
-
-        .shake-animation {
-            animation: shake 0.5s ease-in-out;
-        }
-
-        .hero {
-            padding: 160px 8% 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            min-height: 85vh;
-        }
-
-        .hero-content {
-            max-width: 550px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .hero-content h1 {
-            font-size: 48px;
-            line-height: 1.3;
-            margin-bottom: 20px;
-        }
-
-        .hero-content h1 span {
-            background: linear-gradient(to right, #a855f7, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
-            background: var(--accent-glow);
-        }
-
-        .hero-image {
-            position: relative;
-            max-width: 450px;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: scaleIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            filter: drop-shadow(0 15px 50px rgba(99, 102, 241, 0.3));
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .controls {
-            padding: 40px 8% 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            padding: 8px 24px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            color: white;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
-        }
-
-        .products-section {
-            padding: 20px 8% 80px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .product-card .img-container {
-            width: 100%;
-            height: 220px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-
-        .product-card img {
-            max-height: 100%;
-            width: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.5);
-        }
-
-        .product-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .product-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .product-card .price {
-            color: var(--accent-color);
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .add-to-cart-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            padding: 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .add-to-cart-btn:hover {
-            background: var(--text-main);
-            color: #0f172a;
-        }
-
-        .featured-section {
-            padding: 80px 8%;
-            background: rgba(99, 102, 241, 0.03);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            margin: 60px 0;
-        }
-
-        .featured-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .featured-info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .badge {
-            background: linear-gradient(45deg, #ec4899, #8b5cf6);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .featured-info h2 {
-            font-size: 36px;
+</body>
+</html>
